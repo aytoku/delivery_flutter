@@ -4,64 +4,63 @@ import 'Food.dart';
 
 class HomeView extends StatelessWidget {
   final List<Food> tripsList = [
-    Food("Пирожок вишневый"),
-    Food("Картофель фри")
+    Food("Пирожок вишневый", 'assets/image_1.png'),
+    Food("Картофель фри", 'assets/image_2.png'),
+    Food("Пирожок вишневый", 'assets/image_1.png'),
+    Food("Пирожок вишневый", 'assets/image_1.png'),
+    Food("Пирожок вишневый", 'assets/image_1.png'),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: new ListView.builder(
+    return Scaffold(
+      body: ListView.builder(
           itemCount: tripsList.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index)),
-    );
-  }
-
-  Widget buildTripCard(BuildContext context, int index) {
-    final trip = tripsList[index];
-    return  Container(
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 150.0, top: 20, bottom: 10),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Image.asset("assets/image_1.png"),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
-                  child: Row(children: <Widget>[
-                    Text(trip.title, style: new TextStyle(fontSize: 15.0),),
-                    Spacer(),
-                  ]),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 0.0, top: 10.0, right: 150.0, bottom: 0.0),
-                  child: Container(
-                    child: FittedBox(
-                      child: Material(
-                        color: Colors.white,
-                        elevation: 14.0,
-                        borderRadius: BorderRadius.circular(20),
-                        shadowColor: Colors.black,
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: myDetailsContainer(),
-                            )
-                          ],
+          // ignore: missing_return
+          itemBuilder: (context, index){
+            return Card(
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(left: 0),
+                    child: ListTile(
+                      onTap: (){},
+                      title:Padding(
+                        padding: EdgeInsets.only(top: 0, left: 20),
+                        child: Text(tripsList[index].title),
+                      ),
+                      leading: Padding(
+                        padding: EdgeInsets.only(top: 30),
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage('assets/${tripsList[index].img}'),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        ],
+                  Padding(
+                    padding: EdgeInsets.only(left: 0.0, right: 115, top: 10.0, bottom: 30.0),
+                    child: Container(
+                      child: FittedBox(
+                        child: Material(
+                          color: Colors.white,
+                          elevation: 14.0,
+                          borderRadius: BorderRadius.circular(20),
+                          shadowColor: Colors.black,
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                child: myDetailsContainer(),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
       ),
     );
   }

@@ -43,7 +43,7 @@ class CreatePage extends StatelessWidget{
                     padding: EdgeInsets.only(left: 0.0, top: 30.0, right: 30.0, bottom: 0.0),
                     child: Row(
                       children: <Widget>[
-                        //new FlatButton(onPressed: (){Navigator.of(context).pushNamed("/Message");},
+                       // RaisedButton(onPressed: (){Navigator.pushReplacementNamed(context, '/message');},),
                        Text("Бонусы", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23.0)),
                       ],
                     ),
@@ -84,7 +84,11 @@ class CreatePage extends StatelessWidget{
                     padding: EdgeInsets.only(left: 0.0, top: 15.0, right: 0.0, bottom: 0.0),
                     child: Row(
                       children: <Widget>[
-                       Image.asset('assets/play.png'),
+                       Image(image: AssetImage('assets/play.png')),
+                       Padding(
+                         padding: EdgeInsets.only(left: 10.0, top: 0.0, right: 0.0, bottom: 0.0),
+                         child: Text("Способы оплаты", style: TextStyle(color: Colors.black, fontSize: 15)),
+                       ),
                       ],
                     ),
                   ),

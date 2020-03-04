@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/create.dart';
 import 'package:flutter_app/late_breakfast.dart';
 import 'package:flutter_app/name.dart';
+import 'package:flutter_app/order.dart';
 import 'package:flutter_app/pages.dart';
 import 'home_widget.dart';
 import 'message.dart';
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Old school",
-      routes: <String, WidgetBuilder>{'/Message': (BuildContext context)=>new Message()},
+      routes: {'/message':(context)=>Message(),
+      },
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),

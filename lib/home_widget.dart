@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/create.dart';
 import 'package:flutter_app/message.dart';
+import 'package:flutter_app/truck.dart';
 import 'pages.dart';
 import 'home_view.dart';
 
@@ -18,6 +19,7 @@ class _HomeState extends State<Home> {
     HomeView(),
     Create(),
     Message(),
+    Truck()
   ];
 
   @override
@@ -33,7 +35,7 @@ class _HomeState extends State<Home> {
           currentIndex: _currentIndex,
           items: [
             BottomNavigationBarItem(
-              icon: new Icon(Icons.home),
+              icon: new Icon(Icons.fastfood),
               title: new Text(""),
             ),
             BottomNavigationBarItem(
@@ -44,6 +46,10 @@ class _HomeState extends State<Home> {
               icon: new Icon(Icons.chat),
               title: new Text(""),
             ),
+//            BottomNavigationBarItem(
+//              icon: new Icon(Icons.store, size: 20),
+//              title: new Text(""),
+//            ),
           ]
       ),
     );
