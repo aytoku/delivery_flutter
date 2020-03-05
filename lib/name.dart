@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Name extends StatelessWidget {
@@ -17,7 +18,6 @@ class NamePage extends StatelessWidget{
     return Scaffold(
         body: Column(
           children: <Widget>[
-
             Padding(
               padding: EdgeInsets.only(left: 15.0, top: 20.0, right: 0.0, bottom: 0.0),
               child: Column(
@@ -26,7 +26,7 @@ class NamePage extends StatelessWidget{
                     padding: EdgeInsets.only(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0),
                     child: Row(
                       children: <Widget>[
-                        Text("Сохранить", style: TextStyle(color: Colors.black, fontSize: 17.0)),
+                        Text("Сохранить", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17.0)),
                       ],
                     ),
                   ),
@@ -39,17 +39,30 @@ class NamePage extends StatelessWidget{
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
-                    child: Row(
-                      children: <Widget>[
-                      TextFormField(
-                      decoration: InputDecoration(
-    labelText: 'Enter your username'
-    ),
-    ),
-                      ],
+                    padding: EdgeInsets.only(left: 0.0, top: 50.0, right: 10.0, bottom: 0.0),
+                    child: Container(
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            new Theme(data: new ThemeData(hintColor: Color(0xF2F2F2F2)),
+                                child: TextField(
+                                  decoration: new InputDecoration(
+                                      filled: true,
+                                      fillColor: Color(0xF2F2F2F2),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        borderSide: BorderSide(color: Colors.black),
+                                      ),
+                                      hintText: "Ваше имя"
+                                  ),
+                                ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),

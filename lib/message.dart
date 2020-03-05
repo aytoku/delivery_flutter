@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/create.dart';
 
 class Message extends StatelessWidget {
   @override
-  _MyAppState createState() => _MyAppState();
   Widget build(BuildContext context){
     return MaterialApp(
       title: "",
@@ -58,8 +58,13 @@ class MessagePage extends StatelessWidget{
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                padding: EdgeInsets.only(left: 90, top: 14, right: 90, bottom: 14),
-                                onPressed: (){},
+                                padding: EdgeInsets.only(left: 90, top: 14.5, right: 90, bottom: 14.5),
+                                onPressed: (){Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                    builder: (context) => new Create(),
+                                  ),
+                                );},
                               ),
                             ],
                           ),

@@ -15,52 +15,52 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: tripsList.length,
-          // ignore: missing_return
-          itemBuilder: (context, index){
-            return Card(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 0),
-                    child: ListTile(
-                      onTap: (){},
-                      title:Padding(
-                        padding: EdgeInsets.only(top: 0, left: 20),
-                        child: Text(tripsList[index].title),
+        itemCount: tripsList.length,
+        // ignore: missing_return
+        itemBuilder: (context, index){
+          return Card(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 0),
+                  child: ListTile(
+                    onTap: (){},
+                    title:Padding(
+                      padding: EdgeInsets.only(top: 0, left: 20),
+                      child: Text(tripsList[index].title),
+                    ),
+                    leading: Padding(
+                      padding: EdgeInsets.only(top: 30),
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('assets/${tripsList[index].img}'),
                       ),
-                      leading: Padding(
-                        padding: EdgeInsets.only(top: 30),
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('assets/${tripsList[index].img}'),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 0.0, right: 115, top: 10.0, bottom: 30.0),
+                  child: Container(
+                    child: FittedBox(
+                      child: Material(
+                        color: Colors.white,
+                        elevation: 14.0,
+                        borderRadius: BorderRadius.circular(20),
+                        shadowColor: Colors.black,
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              child: myDetailsContainer(),
+                            )
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 0.0, right: 115, top: 10.0, bottom: 30.0),
-                    child: Container(
-                      child: FittedBox(
-                        child: Material(
-                          color: Colors.white,
-                          elevation: 14.0,
-                          borderRadius: BorderRadius.circular(20),
-                          shadowColor: Colors.black,
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                child: myDetailsContainer(),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

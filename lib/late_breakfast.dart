@@ -19,13 +19,12 @@ class BreakfastPage extends StatelessWidget{
     return Scaffold(
         body: Column(
           children: <Widget>[
-
             Padding(
               padding: EdgeInsets.only(left: 15.0, top: 70.0, right: 0.0, bottom: 0.0),
-              child: Column(
+              child: Row(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(left: 0.0, top: 150.0, right: 0.0, bottom: 0.0),
+                    padding: EdgeInsets.only(left: 0.0, top: 100.0, right: 0.0, bottom: 0.0),
                     child: Row(
                       children: <Widget>[
                         Text("Роял Сет (с Чикен Макнаггетс\n9 шт.)", style: TextStyle(fontSize: 15.0)),
@@ -41,7 +40,7 @@ class BreakfastPage extends StatelessWidget{
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 0.0, top: 40.0, right: 0.0, bottom: 0.0),
+                    padding: EdgeInsets.only(left: 0.0, top: 10.0, right: 0.0, bottom: 0.0),
                     child: Row(
                       children: <Widget>[
                         Text("223 грамм", style: TextStyle(color: Colors.grey, fontSize: 15)),
@@ -49,9 +48,13 @@ class BreakfastPage extends StatelessWidget{
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 0.0, top: 40.0, right: 0.0, bottom: 0.0),
-                    child: RaisedButton(
-                      child: Text("В корзину за 569 ₽", style: TextStyle(color: Colors.white, fontSize: 15),),
+                    padding: EdgeInsets.only(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0),
+                    child: Row(
+                      children: <Widget>[
+                        RaisedButton(
+                          child: Text("В корзину за 569 ₽", style: TextStyle(color: Colors.white, fontSize: 15),), onPressed: () {},
+                        ),
+                      ],
                     ),
                   ),
                 ],
