@@ -1,10 +1,8 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_app/create.dart';
-import 'package:flutter_app/late_breakfast.dart';
-import 'package:flutter_app/name.dart';
-import 'package:flutter_app/basket.dart';
-import 'package:flutter_app/pages.dart';
-import 'home_widget.dart';
+import 'package:flutter_app/examples/http_request.dart';
+import 'package:flutter_app/examples/show_request.dart';
+import 'package:flutter_app/home_widget.dart';
 import 'message.dart';
 
 void main() => runApp(MyApp());

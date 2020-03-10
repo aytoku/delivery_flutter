@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/create.dart';
 import 'package:http/http.dart' as http;
 import 'user.dart';
 import 'dart:convert';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 
-class AutoCompleteDemo extends StatefulWidget {
-  AutoCompleteDemo() : super();
-
-  final String title = "AutoComplete Demo";
+class AutoComplete extends StatefulWidget {
+  AutoComplete() : super();
 
   @override
   _AutoCompleteDemoState createState() => _AutoCompleteDemoState();
 }
 
-class _AutoCompleteDemoState extends State<AutoCompleteDemo> {
+class _AutoCompleteDemoState extends State<AutoComplete> {
   AutoCompleteTextField searchTextField;
   GlobalKey<AutoCompleteTextFieldState<User>> key = new GlobalKey();
   static List<User> users = new List<User>();
@@ -69,42 +68,55 @@ class _AutoCompleteDemoState extends State<AutoCompleteDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          loading
-              ? CircularProgressIndicator()
-              : searchTextField = AutoCompleteTextField<User>(
-            key: key,
-            clearOnSubmit: false,
-            suggestions: users,
-            style: TextStyle(color: Colors.black, fontSize: 16.0),
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
-              hintText: "Search Name",
-              hintStyle: TextStyle(color: Colors.black),
+          Padding(
+            padding: EdgeInsets.only(right: 260),
+            child: FlatButton(
+              child: Image(image: AssetImage('assets/arrow.png'),),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
-            itemFilter: (item, query) {
-              return item.name
-                  .toLowerCase()
-                  .startsWith(query.toLowerCase());
-            },
-            itemSorter: (a, b) {
-              return a.name.compareTo(b.name);
-            },
-            itemSubmitted: (item) {
-              setState(() {
-                searchTextField.textField.controller.text = item.name;
-              });
-            },
-            itemBuilder: (context, item) {
-              // ui for the autocompelete row
-              return row(item);
-            },
           ),
+           new Theme(data: new ThemeData(hintColor: Color(0xF2F2F2F2)),
+             child: Padding(
+               padding: EdgeInsets.only(left: 30, right: 30),
+               child: loading
+                   ? CircularProgressIndicator()
+                   : searchTextField = AutoCompleteTextField<User>(
+                 key: key,
+                 clearOnSubmit: false,
+                 suggestions: users,
+                 style: TextStyle(color: Colors.black, fontSize: 16.0),
+                 decoration: new InputDecoration(
+                   filled: true,
+                   fillColor: Color(0xF2F2F2F2),
+                   border: OutlineInputBorder(
+                     borderRadius: BorderRadius.circular(8.0),
+                   ),
+                 ),
+                 itemFilter: (item, query) {
+                   return item.name
+                       .toLowerCase()
+                       .startsWith(query.toLowerCase());
+                 },
+                 itemSorter: (a, b) {
+                   return a.name.compareTo(b.name);
+                 },
+                 itemSubmitted: (item) {
+                   setState(() {
+                     searchTextField.textField.controller.text = item.name;
+                   });
+                 },
+                 itemBuilder: (context, item) {
+                   // ui for the autocomplete row
+                   return row(item);
+                 },
+               ),
+             ),
+           ),
         ],
       ),
     );

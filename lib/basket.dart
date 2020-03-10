@@ -22,7 +22,7 @@ class BasketPage extends StatelessWidget{
         body: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0),
+              padding: EdgeInsets.only(left: 0.0, top: 30.0, right: 0.0, bottom: 0.0),
               child: Column(
                 children: <Widget>[
                   Padding(
@@ -51,7 +51,7 @@ class BasketPage extends StatelessWidget{
               child: Text("223 грамм", style: TextStyle(color: Colors.black, fontSize: 15),),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 0.0, top: 20.0, right: 0.0, bottom: 0.0),
+              padding: EdgeInsets.only(left: 0.0, top: 100.0, right: 0.0, bottom: 0.0),
               child: RaisedButton(
                 child: Text("В корзину за 569 ₽", style: TextStyle(color: Colors.white, fontSize: 15),),
                 color: Colors.red,
@@ -60,14 +60,7 @@ class BasketPage extends StatelessWidget{
                   borderRadius: BorderRadius.circular(20),
                 ),
                 padding: EdgeInsets.only(left: 90, top: 14.5, right: 90, bottom: 14.5),
-                onPressed: (){
-                  Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                      builder: (context) => new Order(),
-                    ),
-                  );
-                },
+                onPressed: (){},
               ),
             ),
           ],

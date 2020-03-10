@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/auto_complete.dart';
 import 'package:flutter_app/create.dart';
 import 'package:flutter_app/message.dart';
 import 'package:flutter_app/truck.dart';
@@ -19,7 +20,7 @@ class _HomeState extends State<Home> {
     HomeView(),
     Create(),
     Message(),
-    Truck()
+    AutoComplete()
   ];
 
   @override
@@ -35,21 +36,25 @@ class _HomeState extends State<Home> {
           currentIndex: _currentIndex,
           items: [
             BottomNavigationBarItem(
+              backgroundColor: Colors.white70,
               icon: new Icon(Icons.fastfood),
               title: new Text(""),
             ),
             BottomNavigationBarItem(
+              backgroundColor: Colors.white70,
               icon: new Icon(Icons.account_circle),
               title: new Text(""),
             ),
             BottomNavigationBarItem(
+              backgroundColor: Colors.white70,
               icon: new Icon(Icons.chat),
               title: new Text(""),
             ),
-//            BottomNavigationBarItem(
-//              icon: new Icon(Icons.store, size: 20),
-//              title: new Text(""),
-//            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.white70,
+              icon: new Icon(Icons.store),
+              title: new Text(""),
+            ),
           ]
       ),
     );
