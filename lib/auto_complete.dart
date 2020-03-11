@@ -76,7 +76,7 @@ class _AutoCompleteDemoState extends State<AutoComplete> {
             child: FlatButton(
               child: Image(image: AssetImage('assets/arrow.png'),),
               onPressed: () {
-                Navigator.of(context).pop();
+
               },
             ),
           ),

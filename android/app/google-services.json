@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "326979331945",
+    "firebase_url": "https://authentication-b7903.firebaseio.com",
+    "project_id": "authentication-b7903",
+    "storage_bucket": "authentication-b7903.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326979331945:android:bf19cb979fe8f8a1ba7ff8",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326979331945-hnlq3vl4lju7h2tdipp9dc6r7j5096k1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDABDLgMvVZTgXig61r_7W_Nzib6dIUHHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326979331945-hnlq3vl4lju7h2tdipp9dc6r7j5096k1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

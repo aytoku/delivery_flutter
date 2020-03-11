@@ -22,38 +22,35 @@ class OrderPage extends StatelessWidget{
 
     return showDialog(context: context, builder: (context){
       return AlertDialog(
-        title: Text(""),
-        content: Container(
-          decoration: new BoxDecoration(
-            shape: BoxShape.rectangle,
-            color: const Color(0xFFFFFF),
-            borderRadius:
-            new BorderRadius.all(new Radius.circular(20.0)),
-          ),
-          child: Column(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.topLeft,
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Text("Вы действительно хотите\nотменить заказ?"),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Text("Отменить заказ"),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Text("Не отменять"),
-                    ),
-                  ],
-                ),
+        title: new Text("Вы действительно хотите\nотменить заказ?", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+        backgroundColor: Colors.white,
+        shape:
+        RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15)),
+        actions: <Widget>[
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: EdgeInsets.only(right: 50),
+              child: Column(
+                children: <Widget>[
+                  new FlatButton(
+                    child: new Text("Отменить заказ", style: TextStyle(fontSize: 17),),
+                    textColor: Colors.black,
+                    onPressed: () {
+                    },
+                  ),
+                  new FlatButton(
+                    child: Text("Не отменять", style: TextStyle(fontSize: 17),),
+                    textColor: Colors.black,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       );
     });
   }
@@ -104,11 +101,11 @@ class OrderPage extends StatelessWidget{
                                       child: Column(
                                         children: <Widget>[
                                           Padding(
-                                            padding: EdgeInsets.only(left: 15, right: 20),
+                                            padding: EdgeInsets.only(left: 15, right: 0),
                                             child: Text("Картофель фри"),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(left: 0, top: 15, right: 15),
+                                            padding: EdgeInsets.only(left: 0, top: 15, right: 50),
                                             child: Text("569 ₽"),
                                           )
                                         ],
@@ -121,7 +118,7 @@ class OrderPage extends StatelessWidget{
                                   child: Column(
                                     children: <Widget>[
                                       Padding(
-                                        padding: EdgeInsets.only(right: 15),
+                                        padding: EdgeInsets.only(left: 200),
                                         child: Text("x2"),
                                       ),
                                     ],
@@ -138,10 +135,64 @@ class OrderPage extends StatelessWidget{
             ),
             Align(
               alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: EdgeInsets.only(top: 170, bottom: 10),
+                child: Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(left: 0),
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(left: 0),
+                            child: Text("Оплата", style: TextStyle(color: Colors.black, fontSize: 17),),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 20),
+                            child: Text("Visa 9966", style: TextStyle(color: Color(0xC6C6C6c6), fontSize: 17),),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 0, left: 200),
+                      child: Row(
+                        children: <Widget>[
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(left: 0),
+                                  child: Text("569 ₽", style: TextStyle(color: Colors.black, fontSize: 17),),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 0),
+                                  child: Text("Чек", style: TextStyle(color: Color(0xC6C6C6c6), fontSize: 17),),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          Padding(
+                            padding: EdgeInsets.only(left: 0),
+                            child: Image(
+                              image: AssetImage('assets/arrow_right.png'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(left: 15.0, top: 220.0, right: 30.0, bottom: 0.0),
+                    padding: EdgeInsets.only(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0),
                     child: FlatButton(
                       child: Text('Отменить заказ', style: TextStyle(color: Colors.red, fontSize: 17),),
                       onPressed: (){

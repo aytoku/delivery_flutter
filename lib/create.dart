@@ -30,18 +30,60 @@ class CreatePage extends StatelessWidget{
     TextEditingController textEditingController = TextEditingController();
 
       return showDialog(context: context, builder: (context){
-        return AlertDialog(
-          title: Text(""),
-          content: Row(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text("Apple pay"),
+        return Align(
+          alignment: Alignment.bottomCenter,
+          child: AlertDialog(
+            backgroundColor: Colors.white,
+            shape:
+            RoundedRectangleBorder(borderRadius: new BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))),
+            actions: <Widget>[
+              Align(
+                child: Padding(
+                  padding: EdgeInsets.only(right: 50),
+                  child: Column(
+                    children: <Widget>[
+                      new FlatButton(
+                        child: Row(
+                          children: <Widget>[
+                            Image(image: AssetImage('assets/dollar.png'),),
+                            Padding(
+                              padding: EdgeInsets.only(right: 60, left: 15),
+                              child: Text("Наличными", style: TextStyle(color: Colors.black),),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                        },
+                      ),
+                      new FlatButton(
+                        child: Row(
+                          children: <Widget>[
+                            Image(image: AssetImage('assets/play.png'),),
+                            Padding(
+                              padding: EdgeInsets.only(right: 80, left: 15),
+                              child: Text("Apple Pay", style: TextStyle(color: Colors.black),),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                        },
+                      ),
+                      new FlatButton(
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(right: 90),
+                              child: Text("Другой картой", style: TextStyle(color: Colors.black),),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 0),
-                child: Image(image: AssetImage('assets/accept_button'),),
-              )
             ],
           ),
         );
