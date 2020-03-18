@@ -11,6 +11,7 @@ import 'package:flutter_app/create.dart';
 import 'package:flutter_app/home_widget.dart';
 import 'package:flutter_app/examples/http_request.dart';
 import 'package:flutter_app/late_breakfast.dart';
+import 'package:flutter_app/main_data.dart';
 import 'package:flutter_app/name.dart';
 import 'package:flutter_app/basket.dart';
 import 'package:flutter_app/order_address.dart';
@@ -24,7 +25,7 @@ import 'package:flutter_app/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(Home());
+    await tester.pumpWidget(DataPage());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

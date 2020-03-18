@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/examples/http_request.dart';
 import 'package:flutter_app/examples/show_request.dart';
 import 'package:flutter_app/home_widget.dart';
+import 'package:flutter_app/main_data.dart';
 import 'message.dart';
 
 void main() => runApp(MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: Home(),
+      home: DataPage(),
     );
   }
 }
