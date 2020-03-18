@@ -18,6 +18,7 @@ import 'package:flutter_app/order_address.dart';
 import 'package:flutter_app/pages.dart';
 import 'package:flutter_app/examples/screen_one.dart';
 import 'package:flutter_app/examples/show_request.dart';
+import 'package:flutter_app/switch_list.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_app/main.dart';
@@ -25,7 +26,7 @@ import 'package:flutter_app/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(DataPage());
+    await tester.pumpWidget(SwitchEx());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
