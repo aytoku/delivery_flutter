@@ -27,10 +27,6 @@ class _FirstState extends State<First> {
 
   Widget build(BuildContext context) {
     return  new Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
-        title: new Text('Navigation'),
-      ),
       body: new Container(
         padding: EdgeInsets.all(33.0),
         child: new Column(

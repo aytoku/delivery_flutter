@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/First.dart';
 import 'package:flutter_app/apple_pay.dart';
 import 'package:flutter_app/bonuses.dart';
+import 'package:flutter_app/main_data.dart';
 import 'package:flutter_app/message.dart';
 import 'package:flutter_app/basket.dart';
 import 'package:flutter_app/order.dart';
 import 'package:flutter_app/orders_page.dart';
 import 'package:flutter_app/preferences.dart';
+import 'package:flutter_app/switch_list.dart';
 
 import 'exit.dart';
 import 'name.dart';
@@ -25,70 +28,87 @@ class Create extends StatelessWidget {
 // ignore: must_be_immutable
 class CreatePage extends StatelessWidget{
 
-  createAlertDialog(BuildContext context){
+ // createAlertDialog(BuildContext context){
+    _showModalBottomSheet(context) {
+      showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: 300,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+          );
+        },
+      );
+    }
 
     TextEditingController textEditingController = TextEditingController();
 
-      return showDialog(context: context, builder: (context){
-        return Align(
-          alignment: Alignment.bottomCenter,
-          child: AlertDialog(
-            backgroundColor: Colors.white,
-            shape:
-            RoundedRectangleBorder(borderRadius: new BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))),
-            actions: <Widget>[
-              Align(
-                child: Padding(
-                  padding: EdgeInsets.only(right: 50),
-                  child: Column(
-                    children: <Widget>[
-                      new FlatButton(
-                        child: Row(
-                          children: <Widget>[
-                            Image(image: AssetImage('assets/dollar.png'),),
-                            Padding(
-                              padding: EdgeInsets.only(right: 60, left: 15),
-                              child: Text("Наличными", style: TextStyle(color: Colors.black),),
-                            ),
-                          ],
-                        ),
-                        onPressed: () {
-                        },
-                      ),
-                      new FlatButton(
-                        child: Row(
-                          children: <Widget>[
-                            Image(image: AssetImage('assets/play.png'),),
-                            Padding(
-                              padding: EdgeInsets.only(right: 80, left: 15),
-                              child: Text("Apple Pay", style: TextStyle(color: Colors.black),),
-                            ),
-                          ],
-                        ),
-                        onPressed: () {
-                        },
-                      ),
-                      new FlatButton(
-                        child: Row(
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.only(right: 90),
-                              child: Text("Другой картой", style: TextStyle(color: Colors.black),),
-                            ),
-                          ],
-                        ),
-                        onPressed: () {
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      });
-  }
+//      return showDialog(context: context, builder: (context){
+//        return Align(
+//          alignment: Alignment.bottomCenter,
+//          child: AlertDialog(
+//            backgroundColor: Colors.white,
+//            shape:
+//            RoundedRectangleBorder(borderRadius: new BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))),
+//            actions: <Widget>[
+//              Align(
+//                child: Padding(
+//                  padding: EdgeInsets.only(right: 50),
+//                  child: Column(
+//                    children: <Widget>[
+//                      new FlatButton(
+//                        child: Row(
+//                          children: <Widget>[
+//                            Image(image: AssetImage('assets/dollar.png'),),
+//                            Padding(
+//                              padding: EdgeInsets.only(right: 60, left: 15),
+//                              child: Text("Наличными", style: TextStyle(color: Colors.black),),
+//                            ),
+//                          ],
+//                        ),
+//                        onPressed: () {
+//                        },
+//                      ),
+//                      new FlatButton(
+//                        child: Row(
+//                          children: <Widget>[
+//                            Image(image: AssetImage('assets/play.png'),),
+//                            Padding(
+//                              padding: EdgeInsets.only(right: 80, left: 15),
+//                              child: Text("Apple Pay", style: TextStyle(color: Colors.black),),
+//                            ),
+//                          ],
+//                        ),
+//                        onPressed: () {
+//                        },
+//                      ),
+//                      new FlatButton(
+//                        child: Row(
+//                          children: <Widget>[
+//                            Padding(
+//                              padding: EdgeInsets.only(right: 90),
+//                              child: Text("Другой картой", style: TextStyle(color: Colors.black),),
+//                            ),
+//                          ],
+//                        ),
+//                        onPressed: () {
+//                        },
+//                      ),
+//                    ],
+//                  ),
+//                ),
+//              ),
+//            ],
+//          ),
+//        );
+//      });
+  //}
 
 //  String value;
 //  CreatePage({this.value});
@@ -114,7 +134,7 @@ class CreatePage extends StatelessWidget{
                               Navigator.push(
                                 context,
                                 new MaterialPageRoute(
-                                  builder: (context) => new Name(),
+                                  builder: (context) => new DataPage(),
                                 ),
                               );},
                           ),
@@ -169,7 +189,7 @@ class CreatePage extends StatelessWidget{
                               Navigator.push(
                                 context,
                                 new MaterialPageRoute(
-                                  builder: (context) => new Preferences() ,
+                                  builder: (context) => new SwitchEx() ,
                                 ),
                               );},
                           ),
@@ -227,7 +247,7 @@ class CreatePage extends StatelessWidget{
                           child: FlatButton(
                             child: Text('Способы оплаты', style: TextStyle(color: Colors.grey, fontSize: 15),),
                             onPressed: (){
-                              createAlertDialog(context);
+                              _showModalBottomSheet(context);
                             },
                           ),
                         ),

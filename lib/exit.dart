@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/LoginScreen.dart';
 import 'package:flutter_app/create.dart';
 import 'package:flutter_app/phone.dart';
 
@@ -67,7 +68,7 @@ class RegisterPage extends StatelessWidget{
                                 onPressed: (){Navigator.push(
                                   context,
                                   new MaterialPageRoute(
-                                    builder: (context) => new Phone(),
+                                    builder: (context) => new LoginScreen(),
                                   ),
                                 );},
                               ),
