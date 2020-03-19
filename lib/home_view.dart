@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/detail_page.dart';
 
+import 'late_breakfast.dart';
+
 class HomeView extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -35,16 +37,30 @@ class _MyHomePageState extends State<MyHomePage> {
                           padding: EdgeInsets.only(left: 100),
                           child: Row(
                            children: <Widget>[
-                             Text('Поздний завтрак',
-                                 style: TextStyle(
-                                     fontFamily: 'Montserrat',
+                             FlatButton(
+                               onPressed: (){
+                                 Navigator.push(
+                                   context,
+                                   new MaterialPageRoute(
+                                     builder: (context) => new Breakfast(),
+                                   ),
+                                 );
+                               },
+                               child: Row(
+                                 children: <Widget>[
+                                   Text('Поздний завтрак',
+                                       style: TextStyle(
+                                           fontFamily: 'Montserrat',
+                                           color: Colors.black,
+                                           fontSize: 13.0)),
+                                   IconButton(
+                                     icon: Icon(Icons.menu),
                                      color: Colors.black,
-                                     fontSize: 13.0)),
-                             IconButton(
-                               icon: Icon(Icons.menu),
-                               color: Colors.black,
-                               onPressed: () {},
-                             )
+                                     onPressed: () {},
+                                   )
+                                 ],
+                               ),
+                             ),
                            ],
                           ),
                         ),
