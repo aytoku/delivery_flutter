@@ -16,6 +16,73 @@ class Order extends StatelessWidget {
 
 class OrderPage extends StatelessWidget{
 
+  _showModalBottomSheet(context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 300,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+          ),
+          child:  Align(
+            child: Padding(
+              padding: EdgeInsets.only(right: 50),
+              child: Column(
+                children: <Widget>[
+                  new FlatButton(
+                    child: Row(
+                      children: <Widget>[
+                        Image(image: AssetImage('assets/dollar.png'),),
+                        Padding(
+                          padding: EdgeInsets.only(right: 60, left: 15),
+                          child: Text("Наличными", style: TextStyle(color: Colors.black),),
+                        ),
+                        Image(image: AssetImage('assets/check_box.png'),),
+                      ],
+                    ),
+                    onPressed: () {
+                    },
+                  ),
+                  new FlatButton(
+                    child: Row(
+                      children: <Widget>[
+                        Image(image: AssetImage('assets/play.png'),),
+                        Padding(
+                          padding: EdgeInsets.only(right: 80, left: 15),
+                          child: Text("Apple Pay", style: TextStyle(color: Colors.black),),
+                        ),
+                        Image(image: AssetImage('assets/check_box.png'),),
+                      ],
+                    ),
+                    onPressed: () {
+                    },
+                  ),
+                  new FlatButton(
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(right: 90),
+                          child: Text("Другой картой", style: TextStyle(color: Colors.black),),
+                        ),
+                      ],
+                    ),
+                    onPressed: () {
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   createAlertDialog(BuildContext context){
 
     TextEditingController textEditingController = TextEditingController();
@@ -133,59 +200,75 @@ class OrderPage extends StatelessWidget{
                 ],
               ),
             ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: EdgeInsets.only(top: 170, bottom: 10),
-                child: Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 0),
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(left: 0),
-                            child: Text("Оплата", style: TextStyle(color: Colors.black, fontSize: 17),),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: Text("Visa 9966", style: TextStyle(color: Color(0xC6C6C6c6), fontSize: 17),),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 0, left: 200),
-                      child: Row(
-                        children: <Widget>[
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Column(
+            FlatButton(
+              child: Row(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    child: Row(
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 170, bottom: 10),
+                            child: Row(
                               children: <Widget>[
                                 Padding(
                                   padding: EdgeInsets.only(left: 0),
-                                  child: Text("569 ₽", style: TextStyle(color: Colors.black, fontSize: 17),),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 0),
+                                        child: Text("Оплата", style: TextStyle(color: Colors.black, fontSize: 17),),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 20),
+                                        child: Text("Visa 9966", style: TextStyle(color: Color(0xC6C6C6c6), fontSize: 17),),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 0),
-                                  child: Text("Чек", style: TextStyle(color: Color(0xC6C6C6c6), fontSize: 17),),
+                                  padding: EdgeInsets.only(bottom: 0, left: 200),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: EdgeInsets.only(left: 0),
+                                              child: Text("569 ₽", style: TextStyle(color: Colors.black, fontSize: 17),),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.only(left: 0),
+                                              child: Text("Чек", style: TextStyle(color: Color(0xC6C6C6c6), fontSize: 17),),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 0),
+                                        child: Image(
+                                          image: AssetImage('assets/arrow_right.png'),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
                           ),
-
-                          Padding(
-                            padding: EdgeInsets.only(left: 0),
-                            child: Image(
-                              image: AssetImage('assets/arrow_right.png'),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+              onPressed: (){
+                _showModalBottomSheet(context);
+              },
             ),
             Align(
               alignment: Alignment.bottomLeft,

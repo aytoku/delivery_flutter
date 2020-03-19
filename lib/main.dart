@@ -13,6 +13,7 @@ import 'package:flutter_app/save_data_3.dart';
 import 'package:flutter_app/switch_list.dart';
 import 'First.dart';
 import 'Second.dart';
+import 'TextScreen.dart';
 import 'Third.dart';
 import 'message.dart';
 import 'save_data_2.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: SaveDataThree(),
+      home: Home(),
     );
   }
 }

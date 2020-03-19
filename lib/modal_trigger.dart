@@ -6,12 +6,61 @@ class ModalTrigger extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return Container(
-          height: 300,
+          height: 150,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
+            ),
+          ),
+          child:  Align(
+            child: Padding(
+              padding: EdgeInsets.only(right: 50),
+              child: Column(
+                children: <Widget>[
+                  new FlatButton(
+                    child: Row(
+                      children: <Widget>[
+                        Image(image: AssetImage('assets/dollar.png'),),
+                        Padding(
+                          padding: EdgeInsets.only(right: 60, left: 15),
+                          child: Text("Наличными", style: TextStyle(color: Colors.black),),
+                        ),
+                        Image(image: AssetImage('assets/check_box.png'),),
+                      ],
+                    ),
+                    onPressed: () {
+                    },
+                  ),
+                  new FlatButton(
+                    child: Row(
+                      children: <Widget>[
+                        Image(image: AssetImage('assets/play.png'),),
+                        Padding(
+                          padding: EdgeInsets.only(right: 80, left: 15),
+                          child: Text("Apple Pay", style: TextStyle(color: Colors.black),),
+                        ),
+                        Image(image: AssetImage('assets/check_box.png'),),
+                      ],
+                    ),
+                    onPressed: () {
+                    },
+                  ),
+                  new FlatButton(
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(right: 90),
+                          child: Text("Другой картой", style: TextStyle(color: Colors.black),),
+                        ),
+                      ],
+                    ),
+                    onPressed: () {
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         );
@@ -21,21 +70,11 @@ class ModalTrigger extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: () {
+    return FlatButton(
+      child: Text('Способы оплаты', style: TextStyle(color: Colors.grey, fontSize: 15),),
+      onPressed: (){
         _showModalBottomSheet(context);
       },
-      fillColor: Colors.black,
-      constraints: BoxConstraints(minHeight: 50),
-      elevation: 0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-      textStyle: TextStyle(
-        fontSize: 16,
-        fontFamily: 'OpenSans',
-        color: Colors.white,
-        fontWeight: FontWeight.w600,
-      ),
-      child: Text('Hire Baba Yaga!'),
     );
   }
 }

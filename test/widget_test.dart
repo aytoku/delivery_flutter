@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/LoginScreen.dart';
+import 'package:flutter_app/TextScreen.dart';
 import 'package:flutter_app/alert.dart';
 import 'package:flutter_app/auto_complete.dart';
 import 'package:flutter_app/bottom_sheet.dart';
@@ -33,7 +34,7 @@ import 'package:flutter_app/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(SaveDataThree());
+    await tester.pumpWidget(Home());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

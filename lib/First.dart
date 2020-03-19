@@ -22,7 +22,7 @@ class _FirstState extends State<First> {
 
   onClickBtn(){
     _store.set('name', _name.text);
-    Navigator.of(context).pushNamed('/Second');
+    Navigator.of(context).pushNamed('/Create');
   }
 
   Widget build(BuildContext context) {

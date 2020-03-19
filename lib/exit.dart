@@ -68,7 +68,7 @@ class RegisterPage extends StatelessWidget{
                                 onPressed: (){Navigator.push(
                                   context,
                                   new MaterialPageRoute(
-                                    builder: (context) => new LoginScreen(),
+                                    builder: (context) => new Phone(),
                                   ),
                                 );},
                               ),

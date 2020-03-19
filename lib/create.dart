@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/First.dart';
@@ -11,7 +12,9 @@ import 'package:flutter_app/orders_page.dart';
 import 'package:flutter_app/preferences.dart';
 import 'package:flutter_app/switch_list.dart';
 
+import 'GlobalState.dart';
 import 'exit.dart';
+import 'modal_trigger.dart';
 import 'name.dart';
 
 class Create extends StatelessWidget {
@@ -24,9 +27,34 @@ class Create extends StatelessWidget {
     );
   }
 }
-
+class CreatePage extends StatefulWidget {
+  @override
+  CreatePageState createState() => new CreatePageState();
+}
 // ignore: must_be_immutable
-class CreatePage extends StatelessWidget{
+class CreatePageState extends State<CreatePage>{
+
+  GlobalState _store = GlobalState.instance;
+  TextEditingController _name;
+
+  @override
+  void initState(){
+    _name = TextEditingController(text: "Как вас зовут?");
+  }
+
+  bool visibilityTag = false;
+  bool visibilityObs = false;
+
+  void _changed(bool visibility, String field) {
+    setState(() {
+      if (field == "tag"){
+        visibilityTag = visibility;
+      }
+      if (field == "obs"){
+        visibilityObs = visibility;
+      }
+    });
+  }
 
  // createAlertDialog(BuildContext context){
     _showModalBottomSheet(context) {
@@ -49,70 +77,6 @@ class CreatePage extends StatelessWidget{
 
     TextEditingController textEditingController = TextEditingController();
 
-//      return showDialog(context: context, builder: (context){
-//        return Align(
-//          alignment: Alignment.bottomCenter,
-//          child: AlertDialog(
-//            backgroundColor: Colors.white,
-//            shape:
-//            RoundedRectangleBorder(borderRadius: new BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))),
-//            actions: <Widget>[
-//              Align(
-//                child: Padding(
-//                  padding: EdgeInsets.only(right: 50),
-//                  child: Column(
-//                    children: <Widget>[
-//                      new FlatButton(
-//                        child: Row(
-//                          children: <Widget>[
-//                            Image(image: AssetImage('assets/dollar.png'),),
-//                            Padding(
-//                              padding: EdgeInsets.only(right: 60, left: 15),
-//                              child: Text("Наличными", style: TextStyle(color: Colors.black),),
-//                            ),
-//                          ],
-//                        ),
-//                        onPressed: () {
-//                        },
-//                      ),
-//                      new FlatButton(
-//                        child: Row(
-//                          children: <Widget>[
-//                            Image(image: AssetImage('assets/play.png'),),
-//                            Padding(
-//                              padding: EdgeInsets.only(right: 80, left: 15),
-//                              child: Text("Apple Pay", style: TextStyle(color: Colors.black),),
-//                            ),
-//                          ],
-//                        ),
-//                        onPressed: () {
-//                        },
-//                      ),
-//                      new FlatButton(
-//                        child: Row(
-//                          children: <Widget>[
-//                            Padding(
-//                              padding: EdgeInsets.only(right: 90),
-//                              child: Text("Другой картой", style: TextStyle(color: Colors.black),),
-//                            ),
-//                          ],
-//                        ),
-//                        onPressed: () {
-//                        },
-//                      ),
-//                    ],
-//                  ),
-//                ),
-//              ),
-//            ],
-//          ),
-//        );
-//      });
-  //}
-
-//  String value;
-//  CreatePage({this.value});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,7 +93,7 @@ class CreatePage extends StatelessWidget{
                         Padding(
                           padding: EdgeInsets.only(left: 15.0, top: 0.0, right: 0.0, bottom: 0.0),
                           child: FlatButton(
-                            child: Text("Как вас зовут?", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),),
+                            child: Text("${_store.get('name')}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),),
                             onPressed: (){
                               Navigator.push(
                                 context,
@@ -150,7 +114,7 @@ class CreatePage extends StatelessWidget{
                           padding: EdgeInsets.only(left: 30.0, top: 10.0, right: 0.0, bottom: 0.0),
                           child: Row(
                             children: <Widget>[
-                              Text("+7 963 377-08-44", style: TextStyle(color: Colors.grey, fontSize: 15)),
+                              Text("+7", style: TextStyle(color: Colors.grey, fontSize: 15)),
                             ],
                           ),
                         ),
@@ -189,7 +153,7 @@ class CreatePage extends StatelessWidget{
                               Navigator.push(
                                 context,
                                 new MaterialPageRoute(
-                                  builder: (context) => new SwitchEx() ,
+                                  builder: (context) => new Preferences() ,
                                 ),
                               );},
                           ),
@@ -243,12 +207,10 @@ class CreatePage extends StatelessWidget{
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(left: 15.0, top: 15.0, right: 0.0, bottom: 0.0),
-                          child: FlatButton(
-                            child: Text('Способы оплаты', style: TextStyle(color: Colors.grey, fontSize: 15),),
-                            onPressed: (){
-                              _showModalBottomSheet(context);
-                            },
+                          padding: EdgeInsets.only(left: 15.0, top: 10.0, right: 0.0, bottom: 0.0),
+                          child: Theme(
+                            data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
+                            child: ModalTrigger(),
                           ),
                         ),
                       ],

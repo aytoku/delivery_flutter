@@ -4,6 +4,17 @@ import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
 
 class LoginScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      title: "",
+      home: LoginScreenPage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class LoginScreenPage extends StatelessWidget {
   final _phoneController = TextEditingController();
   final _codeController = TextEditingController();
 
@@ -22,7 +33,7 @@ class LoginScreen extends StatelessWidget {
 
           if(user != null){
             Navigator.push(context, MaterialPageRoute(
-                builder: (context) => HomeScreen(user: user,)
+                builder: (context) => HomeScreenPage(user: user,)
             ));
           }else{
             print("Error");
@@ -63,7 +74,7 @@ class LoginScreen extends StatelessWidget {
 
                         if(user != null){
                           Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => HomeScreen(user: user,)
+                              builder: (context) => HomeScreenPage(user: user,)
                           ));
                         }else{
                           print("Error");

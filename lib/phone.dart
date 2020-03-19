@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/create.dart';
 
+import 'HomeScreen.dart';
 import 'code.dart';
 
 class Phone extends StatelessWidget {
@@ -15,6 +17,82 @@ class Phone extends StatelessWidget {
 }
 
 class PhonePage extends StatelessWidget{
+  final _phoneController = TextEditingController();
+  final _codeController = TextEditingController();
+
+  Future<bool> loginUser(String phone, BuildContext context) async{
+    FirebaseAuth _auth = FirebaseAuth.instance;
+
+    _auth.verifyPhoneNumber(
+        phoneNumber: phone,
+        timeout: Duration(seconds: 60),
+        verificationCompleted: (AuthCredential credential) async{
+          Navigator.of(context).pop();
+
+          AuthResult result = await _auth.signInWithCredential(credential);
+
+          FirebaseUser user = result.user;
+
+          if(user != null){
+            Navigator.push(context, MaterialPageRoute(
+                builder: (context) => HomeScreenPage(user: user,)
+            ));
+          }else{
+            print("Error");
+          }
+
+          //This callback would gets called when verification is done auto maticlly
+        },
+        verificationFailed: (AuthException exception){
+          print(exception);
+        },
+        codeSent: (String verificationId, [int forceResendingToken]){
+          showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text("Введите код"),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      TextField(
+                        controller: _codeController,
+                      ),
+                    ],
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text("Подтвердить"),
+                      textColor: Colors.white,
+                      color: Colors.blue,
+                      onPressed: () async{
+                        final code = _codeController.text.trim();
+                        AuthCredential credential = PhoneAuthProvider.getCredential(verificationId: verificationId, smsCode: code);
+
+                        AuthResult result = await _auth.signInWithCredential(credential);
+
+                        FirebaseUser user = result.user;
+
+                        if(user != null){
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => HomeScreenPage(user: user,)
+                          ));
+                        }else{
+                          print("Ошибка");
+                        }
+                      },
+                    )
+                  ],
+                );
+              }
+          );
+        },
+        codeAutoRetrievalTimeout: null
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +132,7 @@ class PhonePage extends StatelessWidget{
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             TextField(
+                              controller: _phoneController,
                                 decoration: new InputDecoration(
                                   hintText: "+7 000 000 00 00",
                                   hintStyle: TextStyle(fontSize: 20.0, color: Color(0xCDCDCDDC)),
@@ -68,7 +147,6 @@ class PhonePage extends StatelessWidget{
                                         color: Colors.white, width: 3.0),
                                   ),
                                 ),
-                                keyboardType: TextInputType.number,
                               ),
                           ],
                         ),
@@ -94,12 +172,11 @@ class PhonePage extends StatelessWidget{
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 padding: EdgeInsets.only(left: 150, top: 14.5, right: 150, bottom: 14.5),
-                                onPressed: (){Navigator.push(
-                                  context,
-                                  new MaterialPageRoute(
-                                    builder: (context) => new Code(),
-                                  ),
-                                );},
+                                onPressed: (){
+                                  final phone = _phoneController.text.trim();
+
+                                  loginUser(phone, context);
+                                },
                               ),
                             ],
                           ),

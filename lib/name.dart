@@ -2,18 +2,40 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/create.dart';
 
-class Name extends StatelessWidget {
+import 'GlobalState.dart';
+
+//class Name extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context){
+//    return MaterialApp(
+//      title: "",
+//      home: NamePage(),
+//      debugShowCheckedModeBanner: false,
+//    );
+//  }
+//}
+class Name extends StatefulWidget {
+
   @override
-  Widget build(BuildContext context){
-    return MaterialApp(
-      title: "",
-      home: NamePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  NamePage createState() => NamePage();
 }
 
-class NamePage extends StatelessWidget{
+class NamePage extends State<Name> {
+
+  TextEditingController _name;
+  GlobalState _store = GlobalState.instance;
+
+  @override
+  void initState(){
+    _name = new TextEditingController();
+    _store.set('name', '');
+    _name.text = _store.get('name');
+  }
+
+  onClickBtn(){
+    _store.set('name', _name.text);
+    Navigator.of(context).pushNamed('/Create');
+  }
 
   //String value;
 
@@ -36,15 +58,7 @@ class NamePage extends StatelessWidget{
                             children: <Widget>[
                               FlatButton(
                                 child: Text('Сохранить', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
-                                onPressed: (){
-                                  Navigator.push(
-                                    context,
-//                                value : value
-                                    new MaterialPageRoute(
-                                      builder: (context) => new Create(),
-                                    ),
-                                  );
-                                },
+                                onPressed: onClickBtn,
                               ),
                             ],
                           ),
@@ -66,6 +80,7 @@ class NamePage extends StatelessWidget{
                                 children: <Widget>[
                                   new Theme(data: new ThemeData(hintColor: Color(0xF2F2F2F2)),
                                     child: TextField(
+                                      controller: _name,
                                       decoration: new InputDecoration(
                                         filled: true,
                                         fillColor: Color(0xF2F2F2F2),
