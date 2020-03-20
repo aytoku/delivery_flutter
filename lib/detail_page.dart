@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/throw_to_basket.dart';
 
 class DetailsPage extends StatefulWidget {
   final heroTag;
@@ -100,7 +101,14 @@ class _DetailsPageState extends State<DetailsPage> {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               padding: EdgeInsets.only(left: 90, top: 14.5, right: 90, bottom: 14.5),
-                              onPressed: (){},
+                              onPressed: (){
+                                Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                    builder: (context) => new ThrowToBasket(),
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ],

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/create.dart';
+import 'package:flutter_app/exit.dart';
 
 import 'HomeScreen.dart';
 import 'code.dart';
@@ -102,9 +103,19 @@ class PhonePage extends StatelessWidget{
               alignment: Alignment.topLeft,
               child: Column(
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 15.0, top: 30.0, right: 0.0, bottom: 0.0),
-                    child: Text("Не сейчас", style: TextStyle(color: Color(0xB2B2B2B2), fontSize: 17.0)),
+                  FlatButton(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 0.0, top: 30.0, right: 0.0, bottom: 0.0),
+                      child: Text("Не сейчас", style: TextStyle(color: Color(0xB2B2B2B2), fontSize: 17.0)),
+                    ),
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        new MaterialPageRoute(
+                          builder: (context) => new Register(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

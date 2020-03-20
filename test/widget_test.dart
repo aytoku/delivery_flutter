@@ -27,6 +27,7 @@ import 'package:flutter_app/save_data_1.dart';
 import 'package:flutter_app/save_data_2.dart';
 import 'package:flutter_app/save_data_3.dart';
 import 'package:flutter_app/switch_list.dart';
+import 'package:flutter_app/throw_to_basket.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_app/main.dart';

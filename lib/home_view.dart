@@ -30,42 +30,50 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(left: 100),
-                          child: Row(
-                           children: <Widget>[
-                             FlatButton(
-                               onPressed: (){
-                                 Navigator.push(
-                                   context,
-                                   new MaterialPageRoute(
-                                     builder: (context) => new Breakfast(),
-                                   ),
-                                 );
-                               },
-                               child: Row(
-                                 children: <Widget>[
-                                   Text('Поздний завтрак',
-                                       style: TextStyle(
-                                           fontFamily: 'Montserrat',
-                                           color: Colors.black,
-                                           fontSize: 13.0)),
-                                   IconButton(
-                                     icon: Icon(Icons.menu),
-                                     color: Colors.black,
-                                     onPressed: () {},
-                                   )
-                                 ],
-                               ),
-                             ),
-                           ],
+                FlatButton(
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                        builder: (context) => new Breakfast(),
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 15.0, left: 90.0, right: 120, bottom: 15),
+                    child: SizedBox(
+                      child: Card(
+                        color: Colors.redAccent,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        child: Container(
+                          height: 24,
+                          width: 150,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: 0),
+                                  child:Text('Поздний завтрак',
+                                      style: TextStyle(
+                                          fontFamily: 'Montserrat',
+                                          color: Colors.white,
+                                          fontSize: 13.0)),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Image(
+                                      image: AssetImage('assets/menu.png')
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ],
-                    ))
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

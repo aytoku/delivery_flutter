@@ -11,6 +11,7 @@ import 'package:flutter_app/save_data.dart';
 import 'package:flutter_app/save_data_1.dart';
 import 'package:flutter_app/save_data_3.dart';
 import 'package:flutter_app/switch_list.dart';
+import 'package:flutter_app/throw_to_basket.dart';
 import 'First.dart';
 import 'Second.dart';
 import 'TextScreen.dart';

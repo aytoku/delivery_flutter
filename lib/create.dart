@@ -56,26 +56,26 @@ class CreatePageState extends State<CreatePage>{
     });
   }
 
- // createAlertDialog(BuildContext context){
-    _showModalBottomSheet(context) {
-      showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-            height: 300,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
+  // createAlertDialog(BuildContext context){
+  _showModalBottomSheet(context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 300,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
-          );
-        },
-      );
-    }
+          ),
+        );
+      },
+    );
+  }
 
-    TextEditingController textEditingController = TextEditingController();
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

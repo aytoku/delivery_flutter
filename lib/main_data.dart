@@ -20,6 +20,4 @@ class DataPage extends StatelessWidget{
       home: new Name(),
     );
   }
-
-
 }
