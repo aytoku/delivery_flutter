@@ -31,31 +31,35 @@ class _HomeState extends State<Home> {
         centerTitle: true,
       ),
       body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-          onTap: onTabTapped,
-          currentIndex: _currentIndex,
-          items: [
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white70,
-              icon: new Icon(Icons.fastfood),
-              title: new Text(""),
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white70,
-              icon: new Icon(Icons.account_circle),
-              title: new Text(""),
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white70,
-              icon: new Icon(Icons.chat),
-              title: new Text(""),
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white70,
-              icon: new Icon(Icons.store),
-              title: new Text(""),
-            ),
-          ]
+      bottomNavigationBar: SizedBox(
+        child: BottomNavigationBar(
+            showSelectedLabels: false,   // <-- HERE
+            showUnselectedLabels: false,
+            onTap: onTabTapped,
+            currentIndex: _currentIndex,
+            items: [
+              BottomNavigationBarItem(
+                backgroundColor: Colors.white70,
+                icon: new Image(image: AssetImage('assets/burger_mini.png')),
+                title: new Text(""),
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Colors.white70,
+                icon: new Image(image: AssetImage('assets/chat_mini.png')),
+                title: new Text(""),
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Colors.white70,
+                icon: new Image(image: AssetImage('assets/human_mini.png')),
+                title: new Text(""),
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Colors.white70,
+                icon: new Image(image: AssetImage('assets/shop_mini.png')),
+                title: new Text(""),
+              ),
+            ]
+        ),
       ),
     );
   }

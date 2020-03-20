@@ -10,6 +10,7 @@ import 'package:flutter_app/LoginScreen.dart';
 import 'package:flutter_app/TextScreen.dart';
 import 'package:flutter_app/alert.dart';
 import 'package:flutter_app/auto_complete.dart';
+import 'package:flutter_app/bottom_nav_bar.dart';
 import 'package:flutter_app/bottom_sheet.dart';
 import 'package:flutter_app/create.dart';
 import 'package:flutter_app/home_widget.dart';
