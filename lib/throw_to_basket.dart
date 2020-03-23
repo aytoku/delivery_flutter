@@ -115,7 +115,7 @@ class _ThrowToBasketPage extends State<ThrowToBasketPage>{
                               "${_adress_store.get('name')}", style: TextStyle(color: Colors.black, fontSize: 15),),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 180),
+                            padding: EdgeInsets.only(left: 220),
                             child:
                             FlatButton(
                               child: Image(image: AssetImage('assets/pencil.png'),),

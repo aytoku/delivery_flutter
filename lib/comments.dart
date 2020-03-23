@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/create.dart';
+import 'package:flutter_app/throw_to_basket.dart';
 
 import 'GlobalState.dart';
 import 'global_state_throw_to_basket.dart';
@@ -51,6 +52,12 @@ class CommentsPage extends State<Comments> {
                   new FlatButton(
                     child: Image(image: AssetImage('assets/arrow_left.png'),),
                     onPressed: () {
+                      Navigator.push(
+                        context,
+                        new MaterialPageRoute(
+                          builder: (context) => new ThrowToBasket(),
+                        ),
+                      );
                     },
                   ),
                   new FlatButton(
@@ -63,7 +70,7 @@ class CommentsPage extends State<Comments> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 15.0, top: 50.0, right: 15.0, bottom: 0.0),
+                padding: EdgeInsets.only(left: 40.0, top: 50.0, right: 15.0, bottom: 0.0),
                 child: Container(
                   child: Center(
                     child: Column(
