@@ -1,7 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/change_address.dart';
+import 'package:flutter_app/comments.dart';
+import 'package:flutter_app/gloabal_state_change_address.dart';
+import 'package:flutter_app/main_data.dart';
+import 'package:flutter_app/modal_trigger_throw_to_basket.dart';
 
 import 'GlobalState.dart';
+import 'global_state_throw_to_basket.dart';
+import 'main_data_change_address.dart';
+import 'main_data_throw_to_basket.dart';
 import 'order_accept.dart';
 
 class ThrowToBasket extends StatelessWidget{
@@ -24,121 +32,21 @@ class ThrowToBasketPage extends StatefulWidget{
 }
 
 class _ThrowToBasketPage extends State<ThrowToBasketPage>{
-  TextEditingController myController = TextEditingController();
+  TextEditingController textEditingController = TextEditingController();
+  GlobalStateThrowToBasket _store = GlobalStateThrowToBasket.instance;
+  TextEditingController _name;
+  GlobalStateChangeAddress _adress_store = GlobalStateChangeAddress.instance;
+  TextEditingController _address_name;
 
-  _showModalBottomSheetText(context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          height: 300,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-          ),
-          child:  Align(
-            child: Padding(
-              padding: EdgeInsets.only(right: 50),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      new FlatButton(
-                        child: Image(image: AssetImage('assets/arrow_left.png'),),
-                        onPressed: () {
-                        },
-                      ),
-                      new FlatButton(
-                        child: Padding(
-                          padding: EdgeInsets.only(right: 80, left: 15),
-                          child: Text("Готово", style: TextStyle(color: Colors.black),),
-                        ),
-                        onPressed:() {print(myController.text);}
-                      ),
-                    ],
-                  ),
-                  TextField(
-                    controller: myController,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
+  @override
+  void initStateAdress(){
+    _address_name = TextEditingController();
   }
 
-  _showModalBottomSheet(context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          height: 300,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-          ),
-          child:  Align(
-            child: Padding(
-              padding: EdgeInsets.only(right: 50),
-              child: Column(
-                children: <Widget>[
-                  new FlatButton(
-                    child: Row(
-                      children: <Widget>[
-                        Image(image: AssetImage('assets/dollar.png'),),
-                        Padding(
-                          padding: EdgeInsets.only(right: 60, left: 15),
-                          child: Text("Наличными", style: TextStyle(color: Colors.black),),
-                        ),
-                        Image(image: AssetImage('assets/check_box.png'),),
-                      ],
-                    ),
-                    onPressed: () {
-                    },
-                  ),
-                  new FlatButton(
-                    child: Row(
-                      children: <Widget>[
-                        Image(image: AssetImage('assets/play.png'),),
-                        Padding(
-                          padding: EdgeInsets.only(right: 80, left: 15),
-                          child: Text("Apple Pay", style: TextStyle(color: Colors.black),),
-                        ),
-                        Image(image: AssetImage('assets/check_box.png'),),
-                      ],
-                    ),
-                    onPressed: () {
-                    },
-                  ),
-                  new FlatButton(
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(right: 90),
-                          child: Text("Другой картой", style: TextStyle(color: Colors.black),),
-                        ),
-                      ],
-                    ),
-                    onPressed: () {
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
+  @override
+  void initState(){
+    _name = TextEditingController(text: "Как вас зовут?");
   }
-
 
   int counter = 1;
   // ignore: non_constant_identifier_names
@@ -203,15 +111,21 @@ class _ThrowToBasketPage extends State<ThrowToBasketPage>{
                         children: <Widget>[
                           Padding(
                             padding: EdgeInsets.only(top: 20, left: 15, bottom: 20),
-                            child: Text("Гугкаева, 34/1"),
+                            child: Text(
+                              "${_adress_store.get('name')}", style: TextStyle(color: Colors.black, fontSize: 15),),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 160),
+                            padding: EdgeInsets.only(left: 180),
                             child:
                             FlatButton(
                               child: Image(image: AssetImage('assets/pencil.png'),),
                               onPressed: (){
-                              },
+                                Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                    builder: (context) => new DataPageChangeAddress(),
+                                  ),
+                                );},
                             ),
                           ),
                         ],
@@ -242,7 +156,7 @@ class _ThrowToBasketPage extends State<ThrowToBasketPage>{
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 20, right: 0, bottom: 20),
+                            padding: EdgeInsets.only(top: 10, right: 0, bottom: 0),
                             child: Text(
                                 '$counter'
                             ),
@@ -261,23 +175,32 @@ class _ThrowToBasketPage extends State<ThrowToBasketPage>{
                       ),
                       Row(
                         children: <Widget>[
-                          FlatButton(
+                          Align(
+                            alignment: Alignment.topLeft,
                             child: Column(
                               children: <Widget>[
                                 Padding(
-                                  padding: EdgeInsets.only(top: 20, right: 0, bottom: 20),
-                                  child: Text(
-                                      'Способы оплаты'
+                                  padding: EdgeInsets.only(left: 10.0, top: 10.0, right: 70.0, bottom: 0.0),
+                                  child: Theme(
+                                    data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
+                                    child: ModalTriggerThrowToBasket(),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 0.0, top: 10.0, right: 0.0, bottom: 0.0),
-                                  child: Row(
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Column(
                                     children: <Widget>[
-                                      Image(image: AssetImage('assets/play.png')),
                                       Padding(
-                                        padding: EdgeInsets.only(left: 0),
-                                        child: Text('Apple Pay', style: TextStyle(fontSize: 15),
+                                        padding: EdgeInsets.only(left: 10.0, top: 10.0, right: 70.0, bottom: 0.0),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Image(image: AssetImage('assets/play.png')),
+                                            Padding(
+                                              padding: EdgeInsets.only(left: 10),
+                                              child: Text('Apple Pay', style: TextStyle(fontSize: 15),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ],
@@ -285,15 +208,12 @@ class _ThrowToBasketPage extends State<ThrowToBasketPage>{
                                 ),
                               ],
                             ),
-                            onPressed: (){
-                              _showModalBottomSheet(context);
-                            },
                           ),
                           FlatButton(
                             child: Column(
                               children: <Widget>[
                                 Padding(
-                                  padding: EdgeInsets.only(top: 20, right: 0, bottom: 20),
+                                  padding: EdgeInsets.only(top: 40, right: 0, bottom: 0),
                                   child: Text(
                                       'Комментарий'
                                   ),
@@ -301,14 +221,18 @@ class _ThrowToBasketPage extends State<ThrowToBasketPage>{
                                 Padding(
                                   padding: EdgeInsets.only(top: 20, right: 0, bottom: 20),
                                   child: Text(
-                                      myController.text
+                                      "${_store.get('name')}", style: TextStyle(color: Color(0xB4B4B4B4), fontSize: 15),
                                   ),
                                 ),
                               ],
                             ),
                             onPressed: (){
-                              _showModalBottomSheetText(context);
-                            },
+                              Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                  builder: (context) => new DataPageThrowToBasket(),
+                                ),
+                              );},
                           ),
                         ],
                       ),
@@ -318,7 +242,7 @@ class _ThrowToBasketPage extends State<ThrowToBasketPage>{
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 15.0, top: 100.0, right: 15.0, bottom: 0.0),
+              padding: EdgeInsets.only(left: 15.0, top: 80.0, right: 15.0, bottom: 10.0),
               child: Container(
                 child: FittedBox(
                   child: Material(

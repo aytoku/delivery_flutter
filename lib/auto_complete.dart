@@ -51,15 +51,16 @@ class _AutoCompleteDemoState extends State<AutoComplete> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Text(
-          user.name,
-          style: TextStyle(fontSize: 16.0),
+        Padding(
+          padding: EdgeInsets.only(left: 5),
+          child: Text(
+            user.name,
+            style: TextStyle(fontSize: 16.0),
+          ),
         ),
         SizedBox(
-          width: 10.0,
-        ),
-        Text(
-          user.email,
+          width: 15.0,
+          height: 40.0,
         ),
       ],
     );

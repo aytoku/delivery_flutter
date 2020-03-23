@@ -1,28 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/GlobalStateModalTrigger.dart';
-import 'package:flutter_app/create.dart';
 
-class ModalTrigger extends StatefulWidget {
-
-  @override
-  ModalTriggerPage createState() => ModalTriggerPage();
-}
-
-class ModalTriggerPage extends State<ModalTrigger>{
+class ModalTriggerOrder extends StatelessWidget {
   String apple_pay = "Apple Pay";
-  GlobalStateModalTrigger _store = GlobalStateModalTrigger.instance;
-
-  @override
-  void initStateModal(){
-    apple_pay = new TextEditingController() as String;
-    _store.set('name', '');
-    apple_pay = _store.get('name');
-  }
-
-  onClickBtn(){
-    _store.set('name', apple_pay);
-    Navigator.of(context).pushNamed('/Create');
-  }
   _showModalBottomSheet(context) {
     showModalBottomSheet(
       context: context,
@@ -74,7 +53,8 @@ class ModalTriggerPage extends State<ModalTrigger>{
                         ),
                       ],
                     ),
-                    onPressed: onClickBtn,
+                    onPressed: () {
+                    },
                   ),
                   new FlatButton(
                     child: Row(
@@ -100,7 +80,60 @@ class ModalTriggerPage extends State<ModalTrigger>{
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      child: Text('Способы оплаты', style: TextStyle(color: Colors.grey, fontSize: 15),),
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: EdgeInsets.only(top: 120, bottom: 10),
+          child: Row(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(right: 40),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(left: 0),
+                      child: Text("Оплата", style: TextStyle(color: Colors.black, fontSize: 17),),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Text("Visa 9966", style: TextStyle(color: Color(0xC6C6C6c6), fontSize: 17),),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 0, left: 130),
+                child: Row(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(left: 0),
+                            child: Text("569 ₽", style: TextStyle(color: Colors.black, fontSize: 17),),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 0),
+                            child: Text("Чек", style: TextStyle(color: Color(0xC6C6C6c6), fontSize: 17),),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Padding(
+                      padding: EdgeInsets.only(left: 0),
+                      child: Image(
+                        image: AssetImage('assets/arrow_right.png'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       onPressed: (){
         _showModalBottomSheet(context);
       },

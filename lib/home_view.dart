@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(top: 15.0, left: 90.0, right: 120, bottom: 15),
+                    padding: EdgeInsets.only(top: 15.0, left: 80.0, right: 70, bottom: 15),
                     child: SizedBox(
                       child: Card(
                         color: Colors.redAccent,
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           height: 24,
                           width: 150,
                           child: Padding(
-                            padding: EdgeInsets.only(left: 10),
+                            padding: EdgeInsets.only(left: 13),
                             child: Row(
                               children: <Widget>[
                                 Padding(
@@ -89,7 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: MediaQuery.of(context).size.height - 50.0,
                         child: ListView(children: [
                           _buildFoodItem('assets/pie.png', 'Пирожок вишневый', '50 ₽'),
-                          _buildFoodItem('assets/free.png', 'Картофель фри', '59 ₽')
                         ]))),
               ],
             ),

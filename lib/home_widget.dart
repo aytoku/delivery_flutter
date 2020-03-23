@@ -45,12 +45,12 @@ class _HomeState extends State<Home> {
               ),
               BottomNavigationBarItem(
                 backgroundColor: Colors.white70,
-                icon: new Image(image: AssetImage('assets/chat_mini.png')),
+                icon: new Image(image: AssetImage('assets/human_mini.png')),
                 title: new Text(""),
               ),
               BottomNavigationBarItem(
                 backgroundColor: Colors.white70,
-                icon: new Image(image: AssetImage('assets/human_mini.png')),
+                icon: new Image(image: AssetImage('assets/chat_mini.png')),
                 title: new Text(""),
               ),
               BottomNavigationBarItem(

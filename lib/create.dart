@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/First.dart';
+import 'package:flutter_app/GlobalStateModalTrigger.dart';
 import 'package:flutter_app/apple_pay.dart';
 import 'package:flutter_app/bonuses.dart';
 import 'package:flutter_app/main_data.dart';
@@ -40,6 +41,14 @@ class CreatePageState extends State<CreatePage>{
   @override
   void initState(){
     _name = TextEditingController(text: "Как вас зовут?");
+  }
+
+  GlobalStateModalTrigger _store_modal = GlobalStateModalTrigger.instance;
+  TextEditingController apple_pay;
+
+  @override
+  void initStateModal(){
+    apple_pay = TextEditingController();
   }
 
   bool visibilityTag = false;
@@ -83,7 +92,7 @@ class CreatePageState extends State<CreatePage>{
         body: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 0.0, top: 70.0, right: 0.0, bottom: 0.0),
+              padding: EdgeInsets.only(left: 0.0, top: 30.0, right: 0.0, bottom: 0.0),
               child: Column(
                 children: <Widget>[
                   Align(
@@ -91,30 +100,23 @@ class CreatePageState extends State<CreatePage>{
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(left: 15.0, top: 0.0, right: 0.0, bottom: 0.0),
-                          child: FlatButton(
-                            child: Text("${_store.get('name')}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),),
-                            onPressed: (){
-                              Navigator.push(
-                                context,
-                                new MaterialPageRoute(
-                                  builder: (context) => new DataPage(),
-                                ),
-                              );},
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(left: 30.0, top: 10.0, right: 0.0, bottom: 0.0),
+                          padding: EdgeInsets.only(left: 35.0, top: 0.0, right: 0.0, bottom: 0.0),
                           child: Row(
                             children: <Widget>[
-                              Text("+7", style: TextStyle(color: Colors.grey, fontSize: 15)),
+                              Text("${_store.get('name')}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),),
+                              Padding(
+                                padding: EdgeInsets.only(left: 170),
+                                child: FlatButton(
+                                  child: Image(image: AssetImage('assets/pencil.png'),),
+                                  onPressed: (){
+                                    Navigator.push(
+                                      context,
+                                      new MaterialPageRoute(
+                                        builder: (context) => new DataPage(),
+                                      ),
+                                    );},
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -126,7 +128,22 @@ class CreatePageState extends State<CreatePage>{
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(left: 15.0, top: 10.0, right: 0.0, bottom: 0.0),
+                          padding: EdgeInsets.only(left: 30.0, top: 5.0, right: 0.0, bottom: 0.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text("+7 963 377-08-44", style: TextStyle(color: Colors.grey, fontSize: 15)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 15.0, top: 30.0, right: 0.0, bottom: 0.0),
                           child: FlatButton(
                             child: Text('Бонусы', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),),
                             onPressed: (){
@@ -146,7 +163,7 @@ class CreatePageState extends State<CreatePage>{
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(left: 15.0, top: 10.0, right: 0.0, bottom: 0.0),
+                          padding: EdgeInsets.only(left: 15.0, top: 8.0, right: 0.0, bottom: 0.0),
                           child: FlatButton(
                             child: Text('Предпочтения', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),),
                             onPressed: (){
@@ -166,7 +183,7 @@ class CreatePageState extends State<CreatePage>{
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(left: 15.0, top: 10.0, right: 0.0, bottom: 0.0),
+                          padding: EdgeInsets.only(left: 15.0, top: 8.0, right: 0.0, bottom: 0.0),
                           child: FlatButton(
                             child: Text('Заказы', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),),
                             onPressed: (){
@@ -186,7 +203,7 @@ class CreatePageState extends State<CreatePage>{
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(left: 15.0, top: 10.0, right: 0.0, bottom: 0.0),
+                          padding: EdgeInsets.only(left: 15.0, top: 40.0, right: 0.0, bottom: 0.0),
                           child: FlatButton(
                             child: Text('Выход', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),),
                             onPressed: (){
@@ -207,7 +224,7 @@ class CreatePageState extends State<CreatePage>{
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(left: 15.0, top: 10.0, right: 0.0, bottom: 0.0),
+                          padding: EdgeInsets.only(left: 15.0, top: 20.0, right: 0.0, bottom: 0.0),
                           child: Theme(
                             data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
                             child: ModalTrigger(),
@@ -221,13 +238,13 @@ class CreatePageState extends State<CreatePage>{
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(left: 30.0, top: 10.0, right: 0.0, bottom: 0.0),
+                          padding: EdgeInsets.only(left: 30.0, top: 5.0, right: 0.0, bottom: 0.0),
                           child: Row(
                             children: <Widget>[
                               Image(image: AssetImage('assets/play.png')),
                               Padding(
                                 padding: EdgeInsets.only(left: 10),
-                                child: Text('Apple Pay', style: TextStyle(fontSize: 15),
+                                child: Text("${_store_modal.get('name')}", style: TextStyle(fontSize: 15),
                                 ),
                               ),
                             ],

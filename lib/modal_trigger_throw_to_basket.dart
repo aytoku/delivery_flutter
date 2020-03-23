@@ -1,28 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/GlobalStateModalTrigger.dart';
-import 'package:flutter_app/create.dart';
 
-class ModalTrigger extends StatefulWidget {
-
-  @override
-  ModalTriggerPage createState() => ModalTriggerPage();
-}
-
-class ModalTriggerPage extends State<ModalTrigger>{
-  String apple_pay = "Apple Pay";
-  GlobalStateModalTrigger _store = GlobalStateModalTrigger.instance;
-
-  @override
-  void initStateModal(){
-    apple_pay = new TextEditingController() as String;
-    _store.set('name', '');
-    apple_pay = _store.get('name');
-  }
-
-  onClickBtn(){
-    _store.set('name', apple_pay);
-    Navigator.of(context).pushNamed('/Create');
-  }
+class ModalTriggerThrowToBasket extends StatelessWidget {
   _showModalBottomSheet(context) {
     showModalBottomSheet(
       context: context,
@@ -65,7 +43,7 @@ class ModalTriggerPage extends State<ModalTrigger>{
                         Image(image: AssetImage('assets/play.png'),),
                         Padding(
                           padding: EdgeInsets.only(right: 0, left: 15),
-                          child: Text(apple_pay, style: TextStyle(color: Colors.black),),
+                          child: Text("Apple Pay", style: TextStyle(color: Colors.black),),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 180),
@@ -74,7 +52,8 @@ class ModalTriggerPage extends State<ModalTrigger>{
                         ),
                       ],
                     ),
-                    onPressed: onClickBtn,
+                    onPressed: () {
+                    },
                   ),
                   new FlatButton(
                     child: Row(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/create.dart';
 
 import 'GlobalState.dart';
+import 'gloabal_state_change_address.dart';
 
 //class Name extends StatelessWidget {
 //  @override
@@ -14,16 +15,16 @@ import 'GlobalState.dart';
 //    );
 //  }
 //}
-class Name extends StatefulWidget {
+class ChangeAddress extends StatefulWidget {
 
   @override
-  NamePage createState() => NamePage();
+  ChangeAddressPage createState() => ChangeAddressPage();
 }
 
-class NamePage extends State<Name> {
+class ChangeAddressPage extends State<ChangeAddress> {
 
   TextEditingController _name;
-  GlobalState _store = GlobalState.instance;
+  GlobalStateChangeAddress _store = GlobalStateChangeAddress.instance;
 
   @override
   void initState(){
@@ -34,8 +35,10 @@ class NamePage extends State<Name> {
 
   onClickBtn(){
     _store.set('name', _name.text);
-    Navigator.of(context).pushNamed('/Create');
+    Navigator.of(context).pushNamed('/ThrowToBasket');
   }
+
+  //String value;
 
   @override
   Widget build(BuildContext context) {
@@ -62,14 +65,6 @@ class NamePage extends State<Name> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 17.0, top: 50.0, right: 0.0, bottom: 0.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text("Как вас зовут?", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
-                            ],
-                          ),
-                        ),
-                        Padding(
                           padding: EdgeInsets.only(left: 15.0, top: 50.0, right: 15.0, bottom: 0.0),
                           child: Container(
                             child: Center(
@@ -86,7 +81,7 @@ class NamePage extends State<Name> {
                                           borderRadius: BorderRadius.circular(8.0),
                                           borderSide: BorderSide(color: Colors.black),
                                         ),
-                                        hintText: "Ваше имя",
+                                        hintText: "",
                                       ),
                                     ),
                                   ),

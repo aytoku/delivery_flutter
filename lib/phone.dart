@@ -58,6 +58,7 @@ class PhonePage extends StatelessWidget{
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       TextField(
+                        maxLength: 6,
                         controller: _codeController,
                       ),
                     ],
@@ -66,7 +67,7 @@ class PhonePage extends StatelessWidget{
                     FlatButton(
                       child: Text("Подтвердить"),
                       textColor: Colors.white,
-                      color: Colors.blue,
+                      color: Colors.red,
                       onPressed: () async{
                         final code = _codeController.text.trim();
                         AuthCredential credential = PhoneAuthProvider.getCredential(verificationId: verificationId, smsCode: code);
@@ -93,7 +94,6 @@ class PhonePage extends StatelessWidget{
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,7 +106,7 @@ class PhonePage extends StatelessWidget{
                   FlatButton(
                     child: Padding(
                       padding: EdgeInsets.only(left: 0.0, top: 30.0, right: 0.0, bottom: 0.0),
-                      child: Text("Не сейчас", style: TextStyle(color: Color(0xB2B2B2B2), fontSize: 17.0)),
+                      child: Text("Не сейчас", style: TextStyle(color: Color(0xB2B2B2B2), fontSize: 17.0, fontWeight: FontWeight.bold)),
                     ),
                     onPressed: (){
                       Navigator.push(
@@ -126,7 +126,7 @@ class PhonePage extends StatelessWidget{
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(left: 15.0, top: 35.0, right: 0.0, bottom: 0.0),
-                    child: Text("Укажите номер вашего телефона,\nи он останеся между нами", style: TextStyle(color: Color(0xB2B2B2B2), fontSize: 15.0)),
+                    child: Text("Укажите номер вашего телефона,\nи он останеся между нами", style: TextStyle(color: Color(0xB4B4B4B4), fontSize: 15.0)),
                   ),
                 ],
               ),
@@ -146,7 +146,7 @@ class PhonePage extends StatelessWidget{
                               controller: _phoneController,
                                 decoration: new InputDecoration(
                                   hintText: "+7 000 000 00 00",
-                                  hintStyle: TextStyle(fontSize: 20.0, color: Color(0xCDCDCDDC)),
+                                  hintStyle: TextStyle(fontSize: 20.0, color: Color(0xCDCDCDDC), fontWeight: FontWeight.bold),
                                   filled: true,
                                   fillColor: Colors.white,
                                   enabledBorder: OutlineInputBorder(
