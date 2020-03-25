@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/create.dart';
+import 'package:flutter_app/create_example.dart';
 import 'package:flutter_app/exit.dart';
 
 import 'HomeScreen.dart';
@@ -36,7 +37,7 @@ class PhonePage extends StatelessWidget{
 
           if(user != null){
             Navigator.push(context, MaterialPageRoute(
-                builder: (context) => HomeScreenPage(user: user,)
+                builder: (context) => CreateExPage(user: user,)
             ));
           }else{
             print("Error");
@@ -78,7 +79,7 @@ class PhonePage extends StatelessWidget{
 
                         if(user != null){
                           Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => HomeScreenPage(user: user,)
+                              builder: (context) => CreateExPage(user: user,)
                           ));
                         }else{
                           print("Ошибка");

@@ -61,11 +61,11 @@ class CommentsPage extends State<Comments> {
                     },
                   ),
                   new FlatButton(
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 0, left: 170),
-                        child: Text("Готово", style: TextStyle(color: Colors.black),),
-                      ),
-                      onPressed:onClickBtn,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 0, left: 170),
+                      child: Text("Готово", style: TextStyle(color: Colors.black),),
+                    ),
+                    onPressed:onClickBtn,
                   ),
                 ],
               ),

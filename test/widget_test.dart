@@ -8,6 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/LoginScreen.dart';
 import 'package:flutter_app/TextScreen.dart';
+import 'package:flutter_app/catalog/catalog_main.dart';
+import 'package:flutter_app/http_requests/album.dart';
 import 'package:flutter_app/alert.dart';
 import 'package:flutter_app/auto_complete.dart';
 import 'package:flutter_app/bottom_nav_bar.dart';
@@ -23,11 +25,16 @@ import 'package:flutter_app/order_address.dart';
 import 'package:flutter_app/pages.dart';
 import 'package:flutter_app/examples/screen_one.dart';
 import 'package:flutter_app/examples/show_request.dart';
+import 'package:flutter_app/http_requests/posts.dart';
+import 'package:flutter_app/http_requests/requests.dart';
+import 'package:flutter_app/sample/sample_main.dart';
 import 'package:flutter_app/save_data.dart';
 import 'package:flutter_app/save_data_1.dart';
 import 'package:flutter_app/save_data_2.dart';
 import 'package:flutter_app/save_data_3.dart';
 import 'package:flutter_app/switch_list.dart';
+import 'package:flutter_app/test.dart';
+import 'package:flutter_app/throw_example.dart';
 import 'package:flutter_app/throw_to_basket.dart';
 import 'package:flutter_test/flutter_test.dart';
 

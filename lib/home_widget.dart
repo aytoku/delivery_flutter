@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/auto_complete.dart';
+import 'package:flutter_app/basket.dart';
 import 'package:flutter_app/create.dart';
 import 'package:flutter_app/message.dart';
+import 'package:flutter_app/throw_to_basket.dart';
 import 'package:flutter_app/truck.dart';
 import 'pages.dart';
 import 'home_view.dart';
@@ -20,7 +22,7 @@ class _HomeState extends State<Home> {
     HomeView(),
     Create(),
     Message(),
-    AutoComplete()
+    Basket()
   ];
 
   @override

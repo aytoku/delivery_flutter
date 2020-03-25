@@ -1,23 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/create.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'GlobalState.dart';
 
-//class Name extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context){
-//    return MaterialApp(
-//      title: "",
-//      home: NamePage(),
-//      debugShowCheckedModeBanner: false,
-//    );
-//  }
-//}
 class Name extends StatefulWidget {
 
   @override
   NamePage createState() => NamePage();
+}
+
+Future<bool>saveNamePref(String name)async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  preferences.setString("name", name);
+  return preferences.commit();
+}
+
+Future<String>getName() async{
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  String name = preferences.getString("name");
+  return name;
 }
 
 class NamePage extends State<Name> {
@@ -34,7 +37,9 @@ class NamePage extends State<Name> {
 
   onClickBtn(){
     _store.set('name', _name.text);
-    Navigator.of(context).pushNamed('/Create');
+    saveNamePref(_name.text).then((bool committed){
+      Navigator.of(context).pushNamed('/Create');
+    });
   }
 
   @override

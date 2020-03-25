@@ -1,14 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/order.dart';
+import 'package:flutter_app/create.dart';
 
 class Basket extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return MaterialApp(
-      title: "Old School",
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
+      title: "",
       home: BasketPage(),
       debugShowCheckedModeBanner: false,
     );
@@ -21,46 +19,66 @@ class BasketPage extends StatelessWidget{
     return Scaffold(
         body: Column(
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: 0.0, top: 30.0, right: 0.0, bottom: 0.0),
+            Align(
+              alignment: Alignment.topLeft,
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(left: 15.0, top: 20.0, right: 0.0, bottom: 0.0),
-                    child: Row(
+                    padding: EdgeInsets.only(left: 15.0, top: 140.0, right: 0.0, bottom: 0.0),
+                    child: Column(
                       children: <Widget>[
-                        Center(
-                          child: Image(image: AssetImage("assets/order.png")),
+                        Padding(
+                          padding: EdgeInsets.only(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text("Ой, пусто!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 0.0, top: 40.0, right: 0.0, bottom: 0.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text("Ваша корзина пуста, откройте\n“Меню” и выберите понравишийся\nтовар.\nМы доставим ваш заказ от 445 ₽", style: TextStyle(color: Colors.black, fontSize: 17)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 0.0, top: 150.0, right: 15.0, bottom: 0.0),
+                          child: Container(
+                            child: FittedBox(
+                              child: Material(
+                                color: Colors.redAccent,
+                                elevation: 20.0,
+                                borderRadius: BorderRadius.circular(20),
+                                shadowColor: Colors.redAccent,
+                                child: Row(
+                                  children: <Widget>[
+                                    RaisedButton(
+                                      child: Text("Перейти в меню", style: TextStyle(color: Colors.white, fontSize: 15),),
+                                      color: Colors.red,
+                                      splashColor: Colors.red,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      padding: EdgeInsets.only(left: 120, top: 14.5, right: 120, bottom: 14.5),
+                                      onPressed: (){Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                          builder: (context) => new Create(),
+                                        ),
+                                      );},
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 0, top: 60.0, right: 75.0, bottom: 0.0),
-              child: Text("Роял Сет (с Чикен Макнаггетс\n9 шт.)", style: TextStyle(color: Colors.black, fontSize: 15),),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 0, top: 20.0, right: 0.0, bottom: 0.0),
-              child: Text("2 Биг Мака, Чикен Макнаггетс (9 шт.), 2\nпорции Среднего Картофеля Фри, 4 соуса\nна выбор", style: TextStyle(color: Colors.grey, fontSize: 15),),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 0, top: 10.0, right: 220.0, bottom: 0.0),
-              child: Text("223 грамм", style: TextStyle(color: Colors.black, fontSize: 15),),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 0.0, top: 100.0, right: 0.0, bottom: 0.0),
-              child: RaisedButton(
-                child: Text("В корзину за 569 ₽", style: TextStyle(color: Colors.white, fontSize: 15),),
-                color: Colors.red,
-                splashColor: Colors.red,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                padding: EdgeInsets.only(left: 90, top: 14.5, right: 90, bottom: 14.5),
-                onPressed: (){},
               ),
             ),
           ],
