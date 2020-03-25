@@ -15,7 +15,7 @@ FooditemList fooditemList = FooditemList(foodItems: [
     hotel: "Dudleys",
     price: 11.99,
     imgUrl:
-    "https://b.zmtcdn.com/data/pictures/chains/8/18427868/1269c190ab2f272599f8f08bc152974b.png",
+    "https://hips.hearstapps.com/pop.h-cdn.co/assets/cm/15/05/480x240/54ca71fb94ad3_-_5summer_skills_burger_470_0808-de.jpg",
   )
 ]);
 

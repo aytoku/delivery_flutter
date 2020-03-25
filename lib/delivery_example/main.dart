@@ -11,7 +11,7 @@ class DeliveryEx extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       blocs: [
-        //add yours BLoCs controlles
+        //add yours BLoCs controllers
         Bloc((i) => CartListBloc()),
         Bloc((i) => ColorBloc()),
       ],
@@ -35,9 +35,10 @@ class Home extends StatelessWidget {
               children: <Widget>[
                 FirstHalf(),
                 SizedBox(height: 45),
-                for (var foodItem in fooditemList.foodItems)
+                for (var foodItem in fooditemList.foodItems) // ignore: sdk_version_ui_as_code
                   Builder(
                     builder: (context) {
+                      // ignore: sdk_version_ui_as_code
                       return ItemContainer(foodItem: foodItem);
                     },
                   )

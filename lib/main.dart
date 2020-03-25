@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/LoginScreen.dart';
 import 'package:flutter_app/catalog/catalog_main.dart';
@@ -39,7 +38,7 @@ class MyApp extends StatelessWidget {
       routes: <String , WidgetBuilder>{
         '/First': (BuildContext  context) => new First(),
         '/Second': (BuildContext  context) => new Second(),
-        '/Third': (BuildContext  context) => new Third('test'),
+        '/Third': (BuildContext  context) => new Third(''),
       },
       theme: ThemeData(
         primarySwatch: Colors.red,
